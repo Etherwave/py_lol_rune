@@ -2,3 +2,4 @@
 .idea
 runes
 *.json
+__pycache__/
