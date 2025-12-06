@@ -297,6 +297,10 @@ class LolRunesGui:
             else:
                 self.secondary_vars[i].set("")
 
+    def open_rune_folder(self):
+        abs_rune_folder = os.path.abspath(self.runes_folder)
+        os.startfile(abs_rune_folder)
+
     def show_window(self):
         self.root.deiconify()
         self.root.lift()  # 提升到顶层
@@ -325,6 +329,7 @@ class LolRunesGui:
             self.menuItems.append(pystray.MenuItem(rune, on_rune_clicked))
         self.menuItems.append(pystray.Menu.SEPARATOR)
         self.menuItems.append(pystray.MenuItem("制作符文", lambda: self.show_window()))
+        self.menuItems.append(pystray.MenuItem("打开文件夹", lambda: self.open_rune_folder()))
         self.menuItems.append(pystray.MenuItem("退出", lambda: self.exit_app()))
         self.menu = pystray.Menu(*self.menuItems)
         self.icon.menu = self.menu
